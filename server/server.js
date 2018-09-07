@@ -26,7 +26,9 @@ app.post('/todos', (req, res) => {
 })
 
 app.get('/todos', (req, res) => { 
-    Todo.find()
+    Todo.find().then((doc) => {
+        res.status(200).send(doc)
+    })
 app.get('/todos/:id', (req, res) => {
     var id = req.params.id;
     if (!ObjectID.isValid(id)) {
